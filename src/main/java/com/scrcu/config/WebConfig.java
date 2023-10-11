@@ -11,6 +11,6 @@ public class WebConfig implements WebMvcConfigurer {
     //拦截器-拦截路径,不拦截login资源
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/user/**");
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
     }
 }

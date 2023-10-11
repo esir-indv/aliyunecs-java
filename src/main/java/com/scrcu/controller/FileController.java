@@ -21,7 +21,7 @@ import java.net.http.HttpRequest;
 public class FileController {
     private static final String UPLOADED_FOLDER = System.getProperty("user.dir") + "upload/";
 
-    @PostMapping("/upload")
+    @PostMapping("/up")
     public String upload(String nickname, MultipartFile picture, HttpServletRequest request) throws IOException {
 
         //获取动态路径
