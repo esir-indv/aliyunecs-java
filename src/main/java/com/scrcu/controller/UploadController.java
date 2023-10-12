@@ -22,17 +22,18 @@ public class UploadController {
     //本地存储文件方式
     @PostMapping("/uploadlocal")
     public Result upload(String username, Integer age, @RequestParam("image") MultipartFile file) throws IOException {
-        log.info("文件上传：{},{},{}",username,age,file);
+        log.info("文件上传：name:{},age:{},image:{}",username,age,file);
         //获取原始文件名
         String originalFilename = file.getOriginalFilename();
-        //构造唯一文件名（不能重复) -uuid(通用唯一识别码 fb87aa74-1092-49d1-bfab-a6987d8f25e9）
+        log.info("原始文件名:{}",originalFilename);
+        //构造新的唯一文件名（不能重复) -uuid(通用唯一识别码 fb87aa74-1092-49d1-bfab-a6987d8f25e9）
         assert originalFilename != null;
         int index = originalFilename.lastIndexOf(".");
         String extname = originalFilename.substring(index);
         String newFileName = UUID.randomUUID().toString() + extname;
         log.info("新的文件名：{}",newFileName);
         //将文件存储在服务器的磁盘目录中：/Users/fengliang/Documents/workspace/javaWeb-2023/transferTo_upload_save
-        String path_save = "/Users/fengliang/Documents/workspace/javaWeb-2023/transferTo_upload_save/";
+        String path_save = "/Users/fengliang/Documents/workspace/aliyunecs-java/transferTo_upload_save/";
         file.transferTo(new File(path_save + newFileName));
         return Result.success();
     }

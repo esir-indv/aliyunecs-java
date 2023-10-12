@@ -16,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     //在请求处理之前进行调用（Controller方法调用前）
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("LoginInterceptor");
+        log.info("拦截器启动 ==> LoginInterceptor");
         return true;
     }
 }
