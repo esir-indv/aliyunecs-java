@@ -34,7 +34,7 @@ public class UploadController {
         String extname = originalFilename.substring(index);
         log.info("extname:"+extname);
         //生成UUID文件名前缀
-        String newFileName = UUID.randomUUID().toString() + extname;
+        String newFileName = UUID.randomUUID() + extname;
         log.info("新的文件名：{}",newFileName);
         //将文件存储在服务器的磁盘目录中：/Users/fengliang/Documents/workspace/javaWeb-2023/transferTo_upload_save
         String path_save = "/Users/fengliang/Documents/workspace/aliyunecs-java/transferTo_upload_save/";

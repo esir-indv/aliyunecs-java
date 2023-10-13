@@ -32,7 +32,7 @@ public class AliOSSUtils {
         // 避免文件覆盖
         String originalFilename = file.getOriginalFilename();
         assert originalFilename != null;
-        String fileName = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
+        String fileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
         //上传文件到 OSS
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         ossClient.putObject(bucketName, fileName, inputStream);
