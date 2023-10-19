@@ -2,8 +2,7 @@ spring:
   #数据库连接信息
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tlias
-    #url: jdbc:mysql://8.137.116.115:3306/aliyun-tlias
+    url: jdbc:mysql://localhost:3306/scrcu_st
     username: root
     password: 621100ab
   #文件上传配置
@@ -28,7 +27,7 @@ aliyun:
     accessKeySecret: VcxTzPSBmJpfkQiZyMgkQhkNVC8sSl
     bucketName: fl-indv-0809
 server:
-  port: 8087
+  port: 9090
 #Spring事务管理日志
 logging:
   level:
