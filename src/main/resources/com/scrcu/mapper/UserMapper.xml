@@ -13,10 +13,44 @@
     <delete id="deleteByoperTelrNo">
         delete
         from user
-        where operTelrNo = #{operTelrNo};
+        where id = #{id};
     </delete>
-
-
+    <!--查询全部用户信息-->
+    <select id="selectAll" resultType="com.scrcu.entity.User">
+        select *
+        from user
+        order by update_time desc;
+    </select>
+    <!--根据ID查询用户信息-->
+    <select id="selectById" resultType="com.scrcu.entity.User">
+        select *
+        from user
+        where id = #{id} ;
+    </select>
+    <!--根据柜员号查询用户信息-->
+    <select id="selectByoperTelrNo" resultType="com.scrcu.entity.User">
+        select *
+        from user
+        where operTelrNo = #{operTelrNo} ;
+    </select>
+    <!--条件&分页查询-->
+    <select id="selectPage" resultType="com.scrcu.entity.User">
+        select *
+        from user
+        <where>
+            <if test="username != null and username != ''">
+                username like concat('%',#{username},'%')
+            </if>
+            <if test="operTelrNo != null">
+                and operTelrNo like concat('%',#{operTelrNo},'%')
+            </if>
+            <if test="begin != null and end !=null">
+                and entrydate between #{begin} and #{end}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+    <!--更新用户信息-->
     <update id="updateUser">
         update user
         <set>
@@ -47,11 +81,18 @@
             <if test="updateTime != null">
                 update_time = #{updateTime}
             </if>
-
-
         </set>
         where id = #{id}
     </update>
+    <!--批量删除用户-->
+    <delete id="batchDeleteUser">
+        delete
+        from user
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>
 

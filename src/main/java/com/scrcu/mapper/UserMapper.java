@@ -2,6 +2,9 @@ package com.scrcu.mapper;
 import com.scrcu.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     /**
@@ -12,7 +15,7 @@ public interface UserMapper {
     /**
      * 根据柜员号删除用户
      */
-    void deleteByoperTelrNo(Integer operTelrNo);
+    void deleteByoperTelrNo(Integer id);
 
     /**
      * 根据柜员号更新用户
@@ -21,4 +24,14 @@ public interface UserMapper {
 
     void updateUser(User user);
 
+    void batchDeleteUser(List<Integer> ids);
+
+    List<User> selectAll();
+
+
+    User selectById(Integer id);
+
+    User selectByoperTelrNo(Integer operTelrNo);
+
+    List<User> selectPage(String username, Integer operTelrNo, LocalDate begin, LocalDate end);
 }
